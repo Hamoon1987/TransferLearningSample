@@ -70,8 +70,7 @@ for e in range(epochs):
     writer.add_scalar('validation_loss', val_epoch_loss, e+1)
     writer.add_scalar('validation_accuracy', val_epoch_acc, e+1)
 
-    if e % 2 == 0:
-      # torch.save(model.cpu().state_dict(), os.path.join('save_model', 'epoch-{}.pth'.format(e)))
+    if e > 0 and e % 2 == 0:
       torch.save({
             'epoch': e,
             'model_state_dict': model.cpu().state_dict(),
