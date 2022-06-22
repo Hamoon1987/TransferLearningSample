@@ -35,7 +35,7 @@ def fetch_dataloader():
 
     return training_loader, validation_loader
 
-
+# This part runs if you directly run the file
 if __name__ == '__main__':
   # Check the data
   training_loader, _ = fetch_dataloader()
