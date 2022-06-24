@@ -27,7 +27,6 @@ class Training:
             os.makedirs('./runs')
         except:
             assert(os.path.isdir('./runs'))
-
         folders = os.listdir("./runs")
         if not folders:
             path_ = "runs/run_1"
@@ -42,7 +41,6 @@ class Training:
             os.makedirs('./save_model')
         except:
             assert(os.path.isdir('./save_model'))
-        
         torch.save({
                     'epoch': e,
                     'model_state_dict': self.model.cpu().state_dict(),
