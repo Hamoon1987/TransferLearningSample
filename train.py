@@ -10,7 +10,8 @@ from torch.utils.tensorboard import SummaryWriter
 class Training:
     def __init__(self):
         self.device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-        self.writer = SummaryWriter('runs')
+        self.path_ = self.find_path()
+        self.writer = SummaryWriter(self.path_)
         self.epochs = args.epochs
         self.loss = nn.CrossEntropyLoss()
         self.model = fetch_model().to(self.device)
@@ -21,7 +22,27 @@ class Training:
         self.val_running_loss_history = []
         self.val_running_corrects_history = []
 
+    def find_path(self):
+        try:
+            os.makedirs('./runs')
+        except:
+            assert(os.path.isdir('./runs'))
+
+        folders = os.listdir("./runs")
+        if not folders:
+            path_ = "runs/run_1"
+        else:
+            n = int(folders[-1].split('_')[-1]) + 1
+            path_ = "runs/run_" + str(n)
+        return path_
+    
     def save_model(self, e):
+
+        try:
+            os.makedirs('./save_model')
+        except:
+            assert(os.path.isdir('./save_model'))
+        
         torch.save({
                     'epoch': e,
                     'model_state_dict': self.model.cpu().state_dict(),
@@ -80,7 +101,7 @@ class Training:
                 self.writer.add_scalar('validation_loss', val_epoch_loss, e+1)
                 self.writer.add_scalar('validation_accuracy', val_epoch_acc, e+1)
 
-                if e % 2 == 0:
+                if e >0 and e % 2 == 0:
                     self.save_model(e)
                     self.model.to(self.device)
                     last_saved_epoch = e
