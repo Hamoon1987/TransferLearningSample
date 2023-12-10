@@ -1,5 +1,5 @@
 # TransferLearningSample
-A sample of using transfer learning for a classification task
+My predictive model is a deep learning model based on Resnet architecture. I use the pre-trained Resnet model and fine-tune it to distinguish ants' and bees’ images. Also, I use docker to capsulate the model and make running the code on different systems easier.
 
 1- Login to Docker and Github \
 2- Get the docker image: sudo docker pull hamoonjafarian/transfer_learning \
