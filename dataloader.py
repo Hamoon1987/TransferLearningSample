@@ -27,8 +27,8 @@ def fetch_dataloader():
                                transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
                                ])
 
-    training_dataset = datasets.ImageFolder('data/train', transform=transform_train)
-    validation_dataset = datasets.ImageFolder('data/val', transform=transform_val)
+    training_dataset = datasets.ImageFolder('ants_and_bees/train', transform=transform_train)
+    validation_dataset = datasets.ImageFolder('ants_and_bees/val', transform=transform_val)
 
     training_loader = torch.utils.data.DataLoader(training_dataset, batch_size=args.train_batch, shuffle=True)
     validation_loader = torch.utils.data.DataLoader(validation_dataset, batch_size =args.val_batch, shuffle=False)
