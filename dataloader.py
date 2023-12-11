@@ -62,3 +62,4 @@ if __name__ == '__main__':
     ax.set_title(labels[idx].item())
   plt.pause(0.05)
   plt.show()
+  plt.savefig("trainingSample.jpg")
