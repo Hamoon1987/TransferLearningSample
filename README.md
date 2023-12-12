@@ -6,7 +6,7 @@ My predictive model utilizes a deep learning architecture based on the Resnet mo
 3- Go to the folder: ```cd TransferLearningSample```  
 4- Build the docker image: ```docker image build -t tl .```  
 5- Run the docker image: ```docker run -it -d --name my_tl tl```  
-6- Attach to the running container using Remote-Containers extension 
+6- Attach to the running container using Remote-Containers extension  
 7- You can see the dataloader details and a sample figure by running: ```python3 dataloader.py```  
 7- Train the model: ```python3 train.py```  
 8- Put the test image in the test folder and run: ```python3 test.py```  
